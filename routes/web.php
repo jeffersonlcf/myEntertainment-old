@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep']], fun
         'as'   => '{username}',
         'uses' => 'ProfilesController@show',
     ]);
+
+    Route::resource('people', 'PeopleController');
 });
 
 // Registered, activated, and is current user routes.

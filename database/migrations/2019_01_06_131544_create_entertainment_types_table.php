@@ -14,21 +14,22 @@ class CreateEntertainmentTypesTable extends Migration
     public function up()
     {
         Schema::create('entertainment_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
+            $table->string('type', 30)->primary();
             $table->timestamps();
         });
 
-        DB::table('entertainment_types')->insert(
+        DB::table('entertainment_types')->insert([
             [
-                'id' => 1,
-                'title' => 'Film',
+                'type' => 'film',
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
             ],
             [
-                'id' => 2,
-                'title' => 'Serie',
+                'type' => 'series',
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
             ]
-        );
+        ]);
     }
 
     /**
