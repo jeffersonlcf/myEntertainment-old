@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PeopleRequest;
-use App\Models\People;
+use App\Models\EntertainmentDetail;
 
-class PeopleController extends Controller
+class EntertainmentDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        return view('people.index');
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('people.create');
+        //
     }
 
     /**
@@ -34,25 +33,18 @@ class PeopleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PeopleRequest $request)
+    public function store(Request $request)
     {
-        $people = new People;
-
-        $people->first_name = $request->input('first_name');
-        $people->last_name = $request->input('last_name');
-
-        $people->save();
-
-        return back()->with('success', trans('profile.updateSuccess'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\People  $people
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(People $person)
+    public function show($id)
     {
         //
     }
@@ -60,10 +52,10 @@ class PeopleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\People  $people
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(People $person)
+    public function edit($id)
     {
         //
     }
@@ -72,10 +64,10 @@ class PeopleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\People  $people
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, People $person)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -83,10 +75,10 @@ class PeopleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\People  $people
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(People $person)
+    public function destroy($id)
     {
         //
     }

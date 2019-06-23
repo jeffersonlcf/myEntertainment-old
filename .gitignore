@@ -46,6 +46,7 @@ composer.lock
 /storage/logs
 /storage/users
 packages/
+/scripts
 
 # Debug Files
 npm-debug.log

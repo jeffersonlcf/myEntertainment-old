@@ -58,6 +58,8 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep']], fun
     ]);
 
     Route::resource('people', 'PeopleController');
+    Route::resource('entertainment', 'EntertainmentController');
+    Route::resource('entertainmentdetail', 'EntertainmentDetailController');
 });
 
 // Registered, activated, and is current user routes.

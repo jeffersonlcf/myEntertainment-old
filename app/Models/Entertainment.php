@@ -15,4 +15,9 @@ class Entertainment extends Model
     {
         return $this->hasMany('App\Models\EntertainmentDetail');
     }
+
+    public function urls()
+    {
+        return $this->hasMany('App\Models\Url');
+    }
 }

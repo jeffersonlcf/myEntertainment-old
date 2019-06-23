@@ -15,8 +15,8 @@ class CreateEntertainmentsTable extends Migration
     {
         Schema::create('entertainments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('entertainment_type', 30);
-            $table->foreign('entertainment_type')->references('type')->on('entertainment_types');
+            $table->string('entertainment_type_type', 30);
+            $table->foreign('entertainment_type_type')->references('type')->on('entertainment_types');
             $table->timestamps();
             $table->softDeletes();
         });
