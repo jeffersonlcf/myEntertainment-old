@@ -66,18 +66,16 @@
 /******/ ({
 
 /***/ "./node_modules/axios/index.js":
-/***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./node_modules/axios/lib/axios.js");
 
-/***/ }),
-
-/***/ "./node_modules/axios/lib/adapters/xhr.js":
+>>>>>>> 40a87a68d2f0a1f604d50e5c07dd56b0d61d0bda
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+<<<<<<< HEAD
 var utils = __webpack_require__("./node_modules/axios/lib/utils.js");
 var settle = __webpack_require__("./node_modules/axios/lib/core/settle.js");
 var buildURL = __webpack_require__("./node_modules/axios/lib/helpers/buildURL.js");
@@ -85,6 +83,8 @@ var parseHeaders = __webpack_require__("./node_modules/axios/lib/helpers/parseHe
 var isURLSameOrigin = __webpack_require__("./node_modules/axios/lib/helpers/isURLSameOrigin.js");
 var createError = __webpack_require__("./node_modules/axios/lib/core/createError.js");
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__("./node_modules/axios/lib/helpers/btoa.js");
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ "./node_modules/axios/lib/helpers/btoa.js");
+>>>>>>> 40a87a68d2f0a1f604d50e5c07dd56b0d61d0bda
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -90200,7 +90200,6 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

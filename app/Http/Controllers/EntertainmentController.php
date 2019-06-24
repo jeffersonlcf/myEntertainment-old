@@ -39,6 +39,11 @@ class EntertainmentController extends Controller
     public function store(Request $request)
     {
         libxml_use_internal_errors(true);
+        $path = parse_url('https://www.imdb.com/title/tt0133093/?ref_=nv_sr_1?ref_=nv_sr_1',PHP_URL_PATH);
+        $ref_number = explode('/',$path);
+        if (in_array('title',$ref_number)){
+            return back()->with('message', 'Fail.');
+        }
         $classname="summary_text";
         $dom = new \DOMDocument();
         $dom->loadHTMLFile('https://www.imdb.com/title/tt0133093');

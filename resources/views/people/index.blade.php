@@ -11,6 +11,19 @@
                     <form method="POST" action="{{ route('entertainment.store') }}">
                         @csrf
 
+                        <div class="form-group row">
+                            <label for="url" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="url" type="text" class="form-control{{ $errors->has("url") ? ' is-invalid' : '' }}" name="url" value="{{ old("url") }}" required autofocus>
+
+                                @if ($errors->has("url"))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first("url") }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-4">
                             <div class="col-md-6 offset-md-4">

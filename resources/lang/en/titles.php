@@ -33,4 +33,7 @@ return [
     'adminRoutes'       => 'Routing Details',
 
     'activeUsers'       => 'Active Users',
+    'laravelBlocker'    => 'Blocker',
+
+    'laravelroles'      => 'Roles Administration',
 ];

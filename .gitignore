@@ -14,16 +14,12 @@ Thumbs.db
 /.sass-cache/*
 .sass-cache
 
-### Sublimt Text Vendor Configs ###
+### Editor Configs ###
 *.sublime-workspace
-
-### PHP Storm Vendor Configs ###
 .idea/*
 /.idea/*
 .phpintel/*
 /.phpintel/*
-
-### VS Code Vendor Configs ###
 /.vscode
 
 ### Vagrant/Homestead Vendor Configs ###
@@ -34,6 +30,8 @@ Homestead.json
 ### Master Configs ###
 .env
 composer.lock
+package-lock.json
+yarn.lock
 
 ### Assets ###
 /node_modules
