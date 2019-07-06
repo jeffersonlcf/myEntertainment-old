@@ -112,4 +112,11 @@ class User extends Authenticatable
     {
         return $this->profiles()->detach($profile);
     }
+
+    public function entertainments()
+    {
+        return $this->belongsToMany('App\Models\Entertainment','entertainment_user')
+        ->withPivot('favourite', 'seen', 'tbseen', 'ntbseen')
+        ->withTimestamps();
+    }
 }

@@ -62,6 +62,12 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     Route::resource('people', 'PeopleController');
     Route::resource('entertainment', 'EntertainmentController');
     Route::resource('entertainmentdetail', 'EntertainmentDetailController');
+    
+    Route::get('/search', 'EntertainmentController@search')->name('entertainment.search');
+    Route::get('/search_results', 'EntertainmentController@search_results')->name('entertainment.search_results');
+    Route::prefix('entertainment/{entertainment}')->group(function () {
+        Route::get('/seen', 'EntertainmentController@seen');
+    });
 });
 
 // Registered, activated, and is current user routes.

@@ -16,6 +16,8 @@ class CreateURLsTable extends Migration
         Schema::create('urls', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url');
+            $table->string('host');
+            $table->string('path');
             $table->unsignedInteger('entertainment_id')->nullable();
             $table->foreign('entertainment_id')->references('id')->on('entertainments')->onDelete('cascade');
             $table->unsignedInteger('source_id')->nullable();

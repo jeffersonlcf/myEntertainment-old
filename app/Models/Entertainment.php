@@ -13,11 +13,23 @@ class Entertainment extends Model
 
     public function entertainmentDetails()
     {
-        return $this->hasMany('App\Models\EntertainmentDetail');
+        return $this->hasOne('App\Models\EntertainmentDetail');
     }
 
     public function urls()
     {
-        return $this->hasMany('App\Models\Url');
+        return $this->hasMany('App\Models\URL');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User','entertainment_user')
+        ->withPivot('favourite', 'seen', 'tbseen', 'ntbseen')
+        ->withTimestamps();
+    }
+
+    public function poster()
+    {
+        return $this->hasOne('App\Models\Poster');
     }
 }

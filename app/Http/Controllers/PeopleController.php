@@ -15,7 +15,7 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        return view('people.index');
+        return view('pages.people.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('people.create');
+        return view('pages.people.create');
     }
 
     /**
