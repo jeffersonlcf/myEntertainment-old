@@ -24,7 +24,7 @@ class Entertainment extends Model
     public function users()
     {
         return $this->belongsToMany('App\Models\User','entertainment_user')
-        ->withPivot('favourite', 'seen', 'tbseen', 'ntbseen')
+        ->withPivot('rating', 'favourite', 'seen', 'tbseen', 'ntbseen')
         ->withTimestamps();
     }
 

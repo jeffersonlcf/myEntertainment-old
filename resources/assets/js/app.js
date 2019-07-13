@@ -22,7 +22,7 @@ window.Vue = require('vue');
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('users-count', require('./components/UsersCount.vue').default);
 Vue.component('e-seen', require('./components/eSeen.vue').default);
-Vue.component('star-rating', require('./components/star-rating.vue').default);
+Vue.component('s-rating', require('./components/starRating.vue').default);
 
 const app = new Vue({
     el: '#app'

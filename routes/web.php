@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     Route::get('/search_results', 'EntertainmentController@search_results')->name('entertainment.search_results');
     Route::prefix('entertainment/{entertainment}')->group(function () {
         Route::get('/seen', 'EntertainmentController@seen');
+        Route::get('/rating', 'EntertainmentController@rating');
     });
 });
 

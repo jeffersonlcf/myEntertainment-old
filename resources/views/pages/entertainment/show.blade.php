@@ -10,10 +10,16 @@
             <div class="profile-title">
                 <a href="{{$entertainment->urls->first()->url}}">{{$entertainment->entertainmentDetails->title}}</a>
             </div>
-            <e-seen :entertainment={{ $entertainment->id }} 
-            :seen={{ empty(Auth::user()->entertainments()->find($entertainment->id)->pivot->seen) ? 'false' : 'true' }}>
-            </e-seen>
-            <star-rating></star-rating>
+            <div>
+                <e-seen :entertainment={{ $entertainment->id }} 
+                :seen={{ empty(Auth::user()->entertainments()->find($entertainment->id)->pivot->seen) ? 'false' : 'true' }}>
+                </e-seen>
+            </div>
+            <div class="col-md-4 offset-md-4">
+                <s-rating :entertainment={{ $entertainment->id }} 
+                :rating={{ empty(Auth::user()->entertainments()->find($entertainment->id)->pivot->rating) ? 0 : Auth::user()->entertainments()->find($entertainment->id)->pivot->rating }}>
+                </s-rating>
+            </div>
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ class CreateEntertainmentDetailsTable extends Migration
         Schema::create('entertainment_details', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->boolean('is_original');
             $table->unsignedInteger('entertainment_id');
             $table->foreign('entertainment_id')->references('id')->on('entertainments')->onDelete('cascade');

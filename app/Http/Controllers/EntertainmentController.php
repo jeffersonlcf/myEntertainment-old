@@ -55,21 +55,27 @@ class EntertainmentController extends Controller
         
         $dom = new \DOMDocument();
         $dom->loadHTMLFile($url);
-        $h1 = $dom->getElementsByTagName('h1')->item(0)->textContent;
-        $title = substr($h1,0,strpos($h1,'(')-2);
-
         $finder = new \DOMXPath($dom);
-        $summary_text = $finder->query("//*[contains(@class, 'summary_text')]");
-        $poster_img = $dom->getElementsByTagName('img')->item(4)->getAttribute('src');
-        $description = $summary_text->item(0)->textContent;
-        preg_match('#\((.*?)\)#', $h1, $year);
 
-        $entertainmentType = EntertainmentType::find('film');
+        $jsonScripts = $finder->query( '//script[@type="application/ld+json"]' );
+        $json = trim( $jsonScripts->item(0)->nodeValue );
+
+        $data = json_decode(str_replace('@t', 't', $json));
+        $image = str_replace('.jpg', 'UX182_CR0,0,182,268_AL_.jpg', $data->image);
+        
+        if ($data->type == 'Movie'){
+            $entertainmentType = EntertainmentType::find('film');
+        }elseif ($data->type == 'TVSeries'){
+            $entertainmentType = EntertainmentType::find('series');
+        } else {
+            return back()->with('error', trans('entertainment.invalidUrl'));
+        }
+
         $entertainment = $entertainmentType->entertainments()->save(new Entertainment);
 
         $entertainmentDetail = new EntertainmentDetail();
-        $entertainmentDetail->title = $title;
-        $entertainmentDetail->description = trim($description);
+        $entertainmentDetail->title = $data->name;
+        $entertainmentDetail->description = $data->description;
         $entertainmentDetail->is_original = true;
 
         $entertainment->entertainmentDetails()->save($entertainmentDetail);
@@ -82,12 +88,11 @@ class EntertainmentController extends Controller
         $entertainment->urls()->save($url);
 
         $poster = new Poster();
-        $poster->data = base64_encode(file_get_contents($poster_img));
+        $poster->data = base64_encode(file_get_contents($image));
 
         $entertainment->poster()->save($poster);
         
         return back()->with('success', trans('entertainment.filmSaved'));
-        //dd($title,$year[1],trim($description),$entertainment);
     }
 
     /**
@@ -160,6 +165,20 @@ class EntertainmentController extends Controller
         } else {
             $user->entertainments()->updateExistingPivot($entertainment,['seen' => null]);
         }
+    }
+
+    public function rating(Request $request, Entertainment $entertainment)
+    {
+        $user = Auth::user();
+
+        if(!$user->entertainments->contains($entertainment)){
+            $user->entertainments()->attach($entertainment);
+        }
+
+        $rating = $request->input('rating');
+
+        $user->entertainments()->updateExistingPivot($entertainment,['rating' => $rating]);
+
     }
 
     public function search()

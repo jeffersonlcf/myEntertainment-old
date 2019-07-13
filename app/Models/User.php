@@ -116,7 +116,7 @@ class User extends Authenticatable
     public function entertainments()
     {
         return $this->belongsToMany('App\Models\Entertainment','entertainment_user')
-        ->withPivot('favourite', 'seen', 'tbseen', 'ntbseen')
+        ->withPivot('rating', 'favourite', 'seen', 'tbseen', 'ntbseen')
         ->withTimestamps();
     }
 }
