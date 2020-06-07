@@ -23,4 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('film', 'FilmController')->only(['show']);
+
+Route::get('/film/search/store', 'FilmController@store_from_search')->name('film.search.store');
